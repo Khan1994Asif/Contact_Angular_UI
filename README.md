@@ -16,6 +16,8 @@ npm install
 ng build
 ```
 To start a local development server, run:
+And than configure local URL in backend to allow UI to communicate.
+http://localhost:4200/contact
 ```bash
 ng serve -o
 ```
