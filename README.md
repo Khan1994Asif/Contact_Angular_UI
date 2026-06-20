@@ -6,12 +6,6 @@ On button click checking and validating the user's input other showing error.
 In syncstatus column adding i button on hovering it showing the required data or success failure messages.
 <img width="1896" height="622" alt="image" src="https://github.com/user-attachments/assets/76609b40-ea40-480d-b9df-8a9c50030716" />
 
-## Development server 
-To start a local development server, run:
-```bash
-ng serve -o
-```
-
 ## Run on your own local with below steps
 Download zip and extract it your folder. 
 Open in VS code and than run below command:
