@@ -1,6 +1,8 @@
 # ContactSyncUI
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.16.
+##Created one Contact component and added form and list view in it. On button click checking and validating the user's input other showing error. 
+In syncstatus column adding i button on hovering it showing the required data or success failure messages.
 <img width="1895" height="727" alt="image" src="https://github.com/user-attachments/assets/e3ec4a3b-8a4d-4230-a778-5316685fa74c" />
 
 
