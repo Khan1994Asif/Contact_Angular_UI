@@ -12,7 +12,7 @@ Query : SELECT Id, EmpFirstName__c, EmpLastName__c, EmpAddress__c FROM Contact W
 <img width="1912" height="1167" alt="image" src="https://github.com/user-attachments/assets/566e3eec-f61b-4c58-87e9-914e9339fa30" />
 
 
-## Run on your own local with below steps
+## Run frontend project on your own local with below steps
 Download zip and extract it your folder. 
 Open in VS code and than run below command:
 ```bash
