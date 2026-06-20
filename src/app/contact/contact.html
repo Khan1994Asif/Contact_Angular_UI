@@ -1,0 +1,163 @@
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12 text-center text-sm-start">
+            <h2 class="border-bottom pb-2 text-secondary">
+                <i class="bi bi-cloud-arrow-up-fill text-primary"></i> Salesforce Contact Integration Manager
+            </h2>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        
+        <div class="col-12 col-md-8 order-2 order-md-1">
+            <div class="card bg-warning text-dark shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center bg-transparent border-bottom border-dark border-opacity-10">
+                    <h5 class="card-title mb-0 fw-bold"><i class="bi bi-table"></i> Contact Records</h5>
+                    <span class="badge bg-dark text-warning">Total Records: {{contactList.length}}</span>
+                </div>
+                <div class="card-body bg-white text-dark m-1 rounded-bottom">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0 text-nowrap">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>SQL ID</th>
+                                    <th>EmpFirstName</th>
+                                    <th>EmpLastName</th>
+                                    <th>EmpAddress</th>
+                                    <th>EmpProfile</th>
+                                    <th>SynStatus</th>
+                                    <th>CreatedDate</th>
+                                    <th class="text-end">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (item of contactList; track $index) {
+                                <tr>
+                                    <td class="fw-semibold">{{$index}}</td>
+                                    <td>{{item.empFirstName}}</td>
+                                    <td>{{item.empLastName}}</td>
+                                    <td>{{item.empAddress}}</td>
+                                    <td>{{item.empProfile}}</td>
+                                    <!-- <td>{{item.synStatus}}</td> -->
+                                     <!-- <td style="max-width: 200px;">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span class="text-truncate" style="max-width: 150px;" [title]="item.synStatus">
+                                        {{ item.synStatus }}
+                                        </span>
+        
+                                        <button type="button" 
+                                        class="btn btn-link btn-sm p-0 ms-1 text-secondary" 
+                                        data-bs-toggle="tooltip" 
+                                        data-bs-placement="top" 
+                                        [attr.data-bs-title]="item.synStatus">
+                                        <i class="bi bi-info-circle-fill text-primary"></i>
+                                        </button>
+                                        </div>
+                                    </td> -->
+
+                                    <td style="max-width: 200px; position: relative;">
+    <div class="d-flex align-items-center justify-content-between">
+        <!-- <span class="text-truncate" style="max-width: 150px;">
+            {{ item.synStatus }}
+        </span> -->
+        
+        <div class="custom-tooltip-container">
+            <i class="bi bi-info-circle-fill text-primary" style="cursor: pointer;"></i>
+            <div class="custom-tooltip-text shadow-sm border">
+                {{ item.synStatus }}
+            </div>
+        </div>
+    </div>
+</td>
+                                    <td>{{item.createdAt}}</td>
+                                    <td class="text-end">
+                                        <button class="btn btn-sm btn-outline-primary me-1" title="Edit"><i class="bi bi-pencil-square"></i></button>
+                                        <button class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash-fill"></i></button>
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4 order-1 order-md-2">
+            <div class="card bg-warning text-dark shadow-sm">
+                <div class="card-header bg-transparent border-bottom border-dark border-opacity-10">
+                    <h5 class="card-title mb-0 fw-bold"><i class="bi bi-person-plus-fill"></i> Upsert Contact</h5>
+                </div>
+                <div class="card-body bg-white text-dark m-1 rounded-bottom">
+                    
+                    <form [formGroup]="contactForm" (ngSubmit)="onSyncSubmit()">
+                        
+                        <div class="row g-2">
+                            <div class="col-12 col-sm-6 mb-3">
+                                <label for="EmpFirstName" class="form-label fw-semibold text-muted small">EmpFirstName*</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="EmpFirstName" 
+                                       formControlName="EmpFirstName"
+                                       [ngClass]="{'is-invalid': contactForm.get('EmpFirstName')?.touched && contactForm.get('EmpFirstName')?.invalid}">
+                                <div class="invalid-feedback">First Name is required.</div>
+                            </div>
+                            <div class="col-12 col-sm-6 mb-3">
+                                <label for="EmpLastName" class="form-label fw-semibold text-muted small">EmpLastName*</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="EmpLastName" 
+                                       formControlName="EmpLastName"
+                                       [ngClass]="{'is-invalid': contactForm.get('EmpLastName')?.touched && contactForm.get('EmpLastName')?.invalid}">
+                                <div class="invalid-feedback">Last Name is required.</div>
+                            </div>
+                        </div>
+
+                        <div class="row g-2">
+                            <div class="col-12 col-sm-6 mb-3">
+                                <label for="EmpAddress" class="form-label fw-semibold text-muted small">EmpAddress*</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="EmpAddress" 
+                                       formControlName="EmpAddress"
+                                       [ngClass]="{'is-invalid': contactForm.get('EmpAddress')?.touched && contactForm.get('EmpAddress')?.invalid}">
+                                <div class="invalid-feedback">Address is required.</div>
+                            </div>
+                            <div class="col-12 col-sm-6 mb-3">
+                                <label for="EmpProfile" class="form-label fw-semibold text-muted small">EmpProfile*</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="EmpProfile" 
+                                       formControlName="EmpProfile"
+                                       [ngClass]="{'is-invalid': contactForm.get('EmpProfile')?.touched && contactForm.get('EmpProfile')?.invalid}">
+                                <div class="invalid-feedback">Profile status is required.</div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="mb-3">
+                            <label for="MobilePhone" class="form-label fw-semibold text-muted small">MobilePhone (Optional)</label>
+                            <input type="tel" 
+                                   class="form-control" 
+                                   id="MobilePhone" 
+                                   formControlName="MobilePhone"
+                                   [ngClass]="{'is-invalid': contactForm.get('MobilePhone')?.touched && contactForm.get('MobilePhone')?.invalid}">
+                            <div class="invalid-feedback">Please provide a valid phone layout structure.</div>
+                        </div> -->
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" 
+                                    [disabled]="isSubmitting"
+                                    class="btn btn-warning fw-bold text-dark border border-dark border-opacity-20 shadow-sm">
+                                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-1" role="status"></span>
+                                <i *ngIf="!isSubmitting" class="bi bi-send-check-fill"></i> Sync SQL to Salesforce
+                            </button>
+                            <button type="reset" class="btn btn-link btn-sm text-decoration-none text-muted" (click)="contactForm.reset()">Clear Form</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
