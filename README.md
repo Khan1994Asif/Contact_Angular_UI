@@ -8,8 +8,9 @@ In syncstatus column adding i button on hovering it showing the required data or
 
 ## Developer console to check Contact Object at salesforce
 Open the the Developer console and use below query to check synced record.
-Query : SELECT Id, EmpFirstName__c, EmpLastName__c, EmpAddress__c FROM Contact WHERE Id= '003g500000MhzrfAAB'
-<img width="1912" height="1167" alt="image" src="https://github.com/user-attachments/assets/566e3eec-f61b-4c58-87e9-914e9339fa30" />
+Query : SELECT Id,SQL_Id__c, EmpFirstName__c, EmpLastName__c, EmpAddress__c FROM Contact WHERE Id= '003g500000MhzrfAAB'
+<img width="1917" height="522" alt="image" src="https://github.com/user-attachments/assets/f7abcc83-1cbb-4fef-a8f3-890d49be25c6" />
+
 
 
 ## Run frontend project on your own local with below steps
