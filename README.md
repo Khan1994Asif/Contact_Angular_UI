@@ -8,8 +8,8 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 <img width="1896" height="622" alt="image" src="https://github.com/user-attachments/assets/76609b40-ea40-480d-b9df-8a9c50030716" />
 
 ## Developer console to check Contact Object at salesforce
-Open the the Developer console and use below query to check synced record.
-Query : SELECT Id,SQL_Id__c, EmpFirstName__c, EmpLastName__c, EmpAddress__c FROM Contact WHERE Id= '003g500000MhzrfAAB'
+* Open the the Developer console and use below query to check synced record.
+* **Query** : SELECT Id,SQL_Id__c, EmpFirstName__c, EmpLastName__c, EmpAddress__c FROM Contact WHERE Id= '003g500000MhzrfAAB'
 <img width="1917" height="522" alt="image" src="https://github.com/user-attachments/assets/f7abcc83-1cbb-4fef-a8f3-890d49be25c6" />
 
 
